@@ -1,4 +1,4 @@
-const requestURL = '/index_data'
+const requestURL = '/index_data?getName=0'
 var check = 0;
 
 function sendRequest(method, url, body = null) {
@@ -18,13 +18,41 @@ function sendRequest(method, url, body = null) {
   })
 }
 
-function getParametrs(){
-sendRequest('GET', requestURL)
+function getParametrs(getName){
+    if(getName == 1){
+        sendRequest('GET', '/index_data?getName=1')
   .then(data => {
-    p1 = 50//data.temperature
-    p2 = 50//data.air_humidity
-    p3 = 50//data.soil_humidity
+    p1 = data.temperature
+    p2 = data.air_humidity
+    p3 = data.soil_humidity
+    name = data.name
     
+    var li_1 = document.getElementById("p1")
+    li_1.innerHTML = 'Температура воздуха: ' + p1 + '°C'
+    
+    var li_2 = document.getElementById("p2")
+    li_2.innerHTML = 'Влажность воздуха: ' + p2 + '%'
+    
+    var li_3 = document.getElementById("p3")
+    li_3.innerHTML = 'Влажность почвы: ' + p3 + '%'
+  			
+    var setName = document.getElementById("name")
+	setName.innerHTML = name
+			console.log(name)
+			console.log(setName)
+            
+    
+    console.log(p1, p2, p3)})
+  .catch(err => console.log(err))
+    }
+    
+    else{
+        sendRequest('GET', requestURL)
+  .then(data => {
+    p1 = data.temperature
+    p2 = data.air_humidity
+    p3 = data.soil_humidity
+			
     var li_1 = document.getElementById("p1")
     li_1.innerHTML = 'Температура воздуха: ' + p1 + '°C'
     
@@ -36,46 +64,47 @@ sendRequest('GET', requestURL)
     
     console.log(p1, p2, p3)})
   .catch(err => console.log(err))
+    }
+
 }
 
 //getParametrs()
-getParametrs()
-setInterval(getParametrs, 5000)
+getParametrs(1)
+setInterval(getParametrs, 5000, 0)
 
-function menu(){
-    let windowtoggle = document.querySelector('.window_nav_main')
-    windowtoggle.classList.toggle('active')
-    let windowTexttoggle = document.querySelector('.window_nav_box')
-    windowTexttoggle.classList.toggle('active_text')
-    let menu = document.querySelector('.menu')
-    menu.classList.toggle('activemenu')
-    
-}
+
 function myFunction() {
   let text;
-  let person = prompt("Введите удобное название для вашего горшочка^_^", document.getElementById("name").innerHTML);
+  let person = prompt("Введите удобное название для вашей станции ^_^ (не более 20 символов)", document.getElementById("name").innerHTML);
   if (person == null || person == "") {
       text="Smartpot Plus";
   } else {
-    text = person;
-    document.getElementById("name").innerHTML = text;
+	  if (person.length <= 20){
+		text = person;
+		document.getElementById("name").innerHTML = text;
+		sendRequest('GET', '/index/set?name=' + text)
+	  }
+	  else alert("Введено больше 20 символов")
   }
   
 }
 
-function push_water()
+async function push_water()
 {
-    if (confirm('Вы действительно хотите включить полив?')) 
+    if (confirm('Вы действительно хотите полить растение?\n* Чрезмерное полив растений может навредить вашему растению!')) 
         {
-            console.log('+')
-            sendRequest('GET', 'push_water')
+			let response = await fetch('/push_water');
+			let text = await 	response.text();
+			alert(text)
         }
 }
 
-function push_fog()
+async function push_fog()
 {
-    if (confirm('Вы действительно хотите включить туман?')) 
+    if (confirm('Вы действительно хотите включить туман на 2 мин?\n* Чрезмерная влажность может навредить вашему растению!')) 
         {
-            sendRequest('GET', 'fog_water')
+			let response = await fetch('/push_fog');
+			let text = await response.text();
+			alert(text)
         }
 }

@@ -2,7 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="user-scalable=no" />
+    <meta name="theme-color" content="#131415" />
+
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#131415" />
+
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-transcluent" />
+
+<!-- Яндекс.Браузер -->
+<meta name="viewport" content="ya-title=#131415,ya-dock=fade" />
+    
+   <title>Station Eywa</title>
     <link rel="stylesheet" href="css/plant_settings.css">
     
 </head>
@@ -19,9 +32,16 @@
             </div>
         </div>
     </header>
+    
+    <div class="preloader_active" id="load">
+   <div class="loader">
+<img src='data:image/png;base64,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'/>   
+  </div>
+     </div>
+     
    <div class="window_nav_main" id="window_nav_main">
         <div class="window_nav_box">
-            <a class="nav_box" href="index.html">
+           <a class="nav_box" href="index.html">
                 <img class="cart_mobile_img" src="data:image/png;base64,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">
                 <div class="nav_link_mobile">Главная</div>
             </a>  
@@ -39,43 +59,52 @@
             </a>    
             <a class="nav_box" href="fog_settings.html">
                 <img class="cart_mobile_img" src="data:image/png;base64,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">
-                <div class="nav_link_mobile">Настройки тумана</div>
+                <div class="nav_link_mobile">Настройки подсветки тумана</div>
             </a>    
-            <a class="nav_box" href="company">
+            <a class="nav_box" href="statistic.html">
                 <img class="cart_mobile_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAQAAAAkGDomAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAgMVDiVgiuVGAAAGBklEQVRo3u2afUhTXxjH782pm5obQfai5csQtTCmSdqLssr89aJhIkhRYxBNA8H6Q8yCtBfDCprLoMLImouKQmgZDhITrVQyLYLwrbRk08QXTKXNuXt+f5zf6W5z03v13t/dH/v+5e49z3M/nnvOc87znIthbrnFrTy4BnAsHBeLATAaueZwooSEb98AAECj8fXlmsWBRKLBQfCfysq4pnGggwfBXw0OLuMaZ66Cgsi/CYJrmjlKTp6cJHtQqeSax06ZmUYjgiOIqiofH66JbKRQzM4CAIDFkpsbHi4Ucs1jp4ICggAAALNZLueaZY5w/No1+GKnp/ftY+0xEklxcXGxRELXjsd78ADijY1t28Ya3pEjZjN8RYcP07Hj81+8gHgGQ3Q0a3g83vg4mn9jYzweVTuhsKEBWvX0hIayhodhkZHASomJ1KwCAtrboUVHx+rVLOLx+ZWV1oBG45UrCy/0ISHd3bB9Y6NIxCJeUFBLC5gjvV4mw3HnVlFRAwOwZU2NQMAinlQ6PAwf1Nqq1ep0Z8/29iLIuroNGxxbxcePjsI2ajX1EbsIKRQzM/BBd+96ecFrXl55eVNT8KrZrFL5+9tb7dr1+ze8X16+jL0NCznyjMYTJ2zvBQU9e4b60WCwfdnp6X/+wDulpSz23bp1Hz6g0bZ1q6MWaWnfvyPIxsZNm+DVnByLBW4GTp1iES8lBY2h9+/XrnXWSiC4eBH1ltms042Pj4zAXyZTVhZrcDheUAD3HQCo1QvNQLH41Sv7GT41tXcva3h+fmh0mUw5OdRsDh3q77cG3L+flX6Ty2tqamu/fkX5wvbt1K3Dw60Bw8JYACwpsX5ES0tgIL1/j4yOPT3zBfBFavlyk4nEq6z09qbrIT4eppMGQ3w8w3A4fuDA27fW/RcRsRg/QmFqamrq3LC9JHl6ymRfvtjOwdFRVhcn6vLzO33650/7EDEzw2IEo66AgMuXx8ZIrKamtDSJpKSkqAitCBwqNFSlmp5GaATx8iWdgMKyJBK1GuYWMBSr1c42TP+jRKLwcA8PDEtJqasjX+rExPXr9GIdK/L1ffQIAAB6e1F2AFeJM2dY3YRTl0plP0u7uxUK+mGYNZHFQgAAaG+XyTxcqyxsMJB4ublc0zhQWRnC+/XL5epJGIZhPj4aDUEA0NubkMA1i1MJhWIxCxsgt1xCrhVS/mrPnuzs2Nj+/slJrkkcqrQUxpXx8ZgYrlkcKDIS1qoBAODNG0Z3xiJRYiIATU0TE0vxsnkzGVFiYxnES0iAy+bg4FKSIhy/d49c2zo6GMPDcXhCubS0ksd7+JDEs1jS0hgDDAtbemIuEKByul5fX//kSVISY3gYlp9vDRgXR9+Dvz8qp3d1BQcziIZh3t7W4wYAAH78oNuHK1agMvLHjwEBjOKtX9/WBl0PD+v1KNnq6wsJoe4jOLirC9o1NDCc2CclDQ1B1+/erVmDYTh+6xbdXoyMRNm3VstwOd1RhZouYlwcKsJXVXl6MgjH56MTNpPJtkJNB1EqnZiAbW/edFJO37nz6dOGhnPn+Hw6eGFhnz5BxwbD3ANAHL9zh8pYzMiAB9gEUVjopEl6Olr5tFrqeP/8gyrUzc2OK9RUEI8fh4Xk2VmFwumjPn8mg0Nj4+3beXkpKSEh860EOF5YiCrUFRXOE9SFEPPzYdcYjZmZ8/QFOlCx1fR0e/vjx0VFWVkSCTmvoqOvXr10qboajbyTJ+fvZ+eIOI62VJOTycnzOkHR27kslr4+nU6pLC5GBwoAADA0tGPHwkPBMaKHR0UFvDoysmXLAi5iYuA5L0GUl5eWVld3dqLAMZ9aW62/bqGH6O39/Dm8MjAQFUXBRWBgfr5SuXs3+u3pGRGRnl5QcP9+c7N1hdBaGzdSw7NHPHYsI+P1a/irs5ORFXfVKqk0O/vGjdpasohuMtGL9yQiqba2lSsZwLPWhQvI+fnzdG3tEevrGV5xoeRynU6rPXp0Mba2nwyw+PHEYiUUkqkQQbhI7dFWGg0CrKrimsWhfHzKyvR6vV6pdLFPxtxyyy23XFr/Aoxhw7bF6nJbAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIzLTAyLTAzVDIxOjE0OjM3KzA5OjAwqiVtxAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMy0wMi0wM1QyMToxNDozNyswOTowMNt41XgAAAAASUVORK5CYII=">
                 <div class="nav_link_mobile">Статистика</div>
-            </a> 
+            </a>               
             <a class="nav_box" href="about_us.html">
                 <img src='data:image/png;base64,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'/>
                 <div class="nav_link_mobile">О нас</div> 
             </a>              
         </div>
     </div>
-    
+    <div class="exit" id="exit" onclick="menu()">
+    	
+	</div>
+   
     <h1>Настройки индикатора</h1>
    <div class="container">
           <ul>
-              <li>Свечение</li>
+              <li style="display: flex">Свечение</li>
                <div>
                 <input type="checkbox" id="on_off"
                  name="contact" class="radiobtn" onclick="onClick()">
-                <label for="on_off" id="text">Включить</label>
+                <label class="labelcheck" for="on_off" id="text">Вкл/Выкл</label>
               </div>
                
-               <div class="shadow" id="shadow">
-                   <li>Цвет</li>
+               
+                   <li style="display: flex">Цвет</li>
                    <div>
-                    <input type="radio" id="contactChoice3" class="radiobtn" name="color">
-                    <label for="contactChoice3"  >Радуга (Интенсивность)</label>
-
+                    <div class="shadow" id="shadow">
+                    <input type="radio" id="contactChoice3" value="phone" class="radiobtn" name="color" onclick="rainbowcolor()">
+                    <label class="labelcheck" for="contactChoice3"  >Радуга (Интенсивность)</label>
+					</div> 
+                     <div class="shadow" id="shadow3">
                      <div class="slider">
                       <div class="value_left">0%</div>
                        <input type="range" id="rainbow_slider" min="0" max="100" value="0">
                        <div class="value_right">100%</div>
                      </div>
+					   </div>
                          <div>
-                            <input type="radio" id="contactChoice4" class="radiobtn" name="color">
-                            <label for="contactChoice4" >Выбор цвета</label>
+                           <div class="shadow" id="shadow1">
+                            <input type="radio" id="contactChoice4" class="radiobtn" name="color" onclick="rainbowcolor()" >
+                            <label class="labelcheck" for="contactChoice4" >Выбор цвета</label>
+                            </div>
+                             <div class="shadow" id="shadow4">
                             <div style="margin-left: -35%; font-size: 20px;margin-top: 5%;margin-bottom: 5%;">Цвет</div>
                             <div class="slider">
                                <input type="range"  id="h" min="0" max="359" value="0" oninput="setRGBFromHSV()">
@@ -93,10 +122,11 @@
                              
                              <div class="square" id="square"></div>
                             
+							 </div>
                             
                         </div>
                     </div>
-               </div>
+
           
         </ul>
           
@@ -104,11 +134,13 @@
 
         
         <button class="btn" onclick="indicator_save_data()" style="display: inline-block; padding-left: 0%; padding-right: 0%; margin-left: -10%;">Сохранить</button>
-        <button class="btn" style="margin-top: 15px;margin-top: 15px; display: inline-block; padding-left: 0%; padding-right: 0%; right: -10%;" onclick="def_values_indicator()">Сброс</button>
+        	<button class="btn" style="margin-top: 15px;margin-top: 15px; display: inline-block; padding-left: 0%; padding-right: 0%; right: -10%;" onclick="def_values_indicator()">Сброс</button>
+        
+        <br/>
     
     </div>
      <script>
-            let check =0;
+           
              function setRGBFromHSV()
                {
                 var h = document.getElementById("h").value;
@@ -133,43 +165,117 @@
                 b = Math.max(0, Math.min(255, Math.round(b*255)));
                 document.getElementById("square").style.backgroundColor =
                                "rgb(" + r + "," + g + "," + b + ")";
-                document.getElementById("output").innerHTML =  'rgb(' + r + ',' + g + ',' + b + ')' ;
+               
                  
             }
            
             function onClick(){
-                let shadowtoggle = document.getElementById("shadow");
-                shadowtoggle.classList.toggle('shadow')
-                var li_1 = document.getElementById('text')
-                if(check==0){
-                   li_1.innerHTML = 'Выключить'; 
-                    check=1;
-                }
-                else{
-                    li_1.innerHTML = 'Включить'; 
-                    check=0;
-                }
-                
+				
+				let button = document.getElementById("on_off");
+                let rainbowtoggle = document.getElementById("shadow");
+				let colortoggle = document.getElementById("shadow1");
+				let rainbowtoggle2 = document.getElementById("shadow3");
+				 let colortoggle2 = document.getElementById("shadow4");
+				let rainbow = document.getElementById("contactChoice3");
+                let color = document.getElementById("contactChoice4");
+				 rainbowtoggle.classList.toggle("shadow");
+					colortoggle.classList.toggle("shadow");
+                if(rainbow.checked == true)
+					{
+						colortoggle2.classList.add("shadow");
+						rainbowtoggle2.classList.remove("shadow");
+					}
+				if(color.checked == true)
+					{
+						rainbowtoggle2.classList.add("shadow");
+						colortoggle2.classList.remove("shadow");
+					}
+				if(button.checked == false)
+				{
+					colortoggle2.classList.add("shadow");
+					rainbowtoggle2.classList.add("shadow");
+				}
                 
             }
+		 		
+		 	function rainbowcolor(){
+				 let rainbowtoggle = document.getElementById("shadow3");
+				 let colortoggle = document.getElementById("shadow4");
+				let rainbow = document.getElementById("contactChoice3");
+                let color = document.getElementById("contactChoice4");
+				if(rainbow.checked == true){
+					colortoggle.classList.add("shadow");
+					rainbowtoggle.classList.remove("shadow");
+				}
+				if(color.checked == true){
+					rainbowtoggle.classList.add("shadow");
+					colortoggle.classList.remove("shadow");
+				}
+			}
+		 
             function menu(){
-                let windowtoggle = document.querySelector('.window_nav_main')
-                windowtoggle.classList.toggle('active')
-                let windowTexttoggle = document.querySelector('.window_nav_box')
-                windowTexttoggle.classList.toggle('active_text')
-                let menu = document.querySelector('.menu')
-                menu.classList.toggle('activemenu')
-            }
+				let windowtoggle = document.querySelector('.window_nav_main')
+				windowtoggle.classList.toggle('active')
+				let windowTexttoggle = document.querySelector('.window_nav_box')
+				windowTexttoggle.classList.toggle('active_text')
+				let menu = document.querySelector('.menu')
+				menu.classList.toggle('activemenu')
+				let exittoggle = document.querySelector('.exit')
+				exittoggle.classList.toggle('activeexit')
+
+			}
+			
          
             function def_values_indicator(){
-                document.getElementById('on_off').checked = true;
-                document.getElementById("shadow").classList.remove("shadow");
-                check = 1;
-                
-                document.getElementById('contactChoice3').checked = true;
-                document.getElementById('rainbow_slider').value = "25";
-                
-                sendRequest('GET', 'indicator_def_values');
+             sendRequest('GET', '/get_def_settings').then(data => {
+				 var rainbow = false;
+				 var color = false;
+				 var on_off = false;
+				if(data.indicator_power != 0 ){
+					on_off = true;
+				}
+				
+				if(data.indicator_raninbow_speed != 0 ){
+					 rainbow = true;
+				}
+				else{
+					   
+					   color = true;
+				 }
+				
+				var rainbow_value = 100 - data.indicator_raninbow_speed;
+				var r = data.indicatorRed;
+				var g = data.indicatorGreen;
+				var b = data.indicatorBlue;
+				 
+				RGBtoHSV(r,g,b)
+				setRGBFromHSV()
+				
+				document.getElementById('on_off').checked = on_off
+				document.getElementById('contactChoice3').checked = rainbow
+				document.getElementById('rainbow_slider').value = rainbow_value
+				document.getElementById('contactChoice4').checked = color
+				
+				
+				let rainbowtoggle = document.getElementById("shadow");
+				let colortoggle = document.getElementById("shadow1");
+				let rainbowtoggle2 = document.getElementById("shadow3");
+				 let colortoggle2 = document.getElementById("shadow4");
+				if(on_off == true)
+				{
+					rainbowtoggle.classList.remove("shadow");
+					colortoggle.classList.remove("shadow");
+				}
+				if(rainbow == true && on_off == true){
+					rainbowtoggle2.classList.remove("shadow");
+					colortoggle2.classList.add("shadow");
+				}
+				if(color == true && on_off == true){
+					colortoggle2.classList.remove("shadow");
+					rainbowtoggle2.classList.add("shadow");
+				}
+				})
+				
             }
             
              function sendRequest(method, url, body = null) {
@@ -197,12 +303,105 @@
                 var color_s = document.getElementById('s').value;
                 var color_v = document.getElementById('v').value;
 
-                const requestURL = 'fog_save_data/set?light=' + on_off + '&rainbow=' + rainbow + '&color=' + color + '&rainbow_slider=' + rainbow_slider + '&color_h=' + color_h + '&color_s=' + color_s + '&color_v=' + color_v;
+                const requestURL = '/indicator_save_data/set?light=' + on_off + '&rainbow=' + rainbow + '&color=' + color + '&rainbow_slider=' + rainbow_slider + '&color_h=' + color_h + '&color_s=' + color_s + '&color_v=' + color_v;
                 console.log(requestURL);
                 
                 sendRequest('GET', requestURL).then(data => console.log(data));
     
             }
+		 
+		 function indicator_load_data(){
+			sendRequest('GET', '/indicator_load_data')
+			  .then(data => {
+				var on_off = data.on_off;
+				var rainbow = data.rainbow;
+				var rainbow_value = data.rainbow_value;
+				var color = data.color;
+				var color_h = data.color_h;
+				var color_s = data.color_s;
+				var color_v = data.color_v;
+				
+				document.getElementById('on_off').checked = on_off
+				document.getElementById('contactChoice3').checked = rainbow
+				document.getElementById('rainbow_slider').value = rainbow_value
+				document.getElementById('contactChoice4').checked = color
+				document.getElementById('h').value = color_h
+				document.getElementById('s').value = color_s
+				document.getElementById('v').value = color_v
+				
+				setRGBFromHSV()
+				
+				let rainbowtoggle = document.getElementById("shadow");
+				let colortoggle = document.getElementById("shadow1");
+				let rainbowtoggle2 = document.getElementById("shadow3");
+				 let colortoggle2 = document.getElementById("shadow4");
+				if(on_off == true)
+				{
+					
+					rainbowtoggle.classList.remove("shadow");
+					colortoggle.classList.remove("shadow");
+				}
+				if(rainbow == true && on_off == true){
+					rainbowtoggle2.classList.remove("shadow");
+				}
+				if(color == true && on_off == true){
+					colortoggle2.classList.remove("shadow");
+				}
+				
+			})
+		 }
+		 
+         window.onload = function () {
+      window.setTimeout(function () {
+        document.getElementById("load").classList.add("preloader_hidden");
+      }, 500); 
+    }
+		 indicator_load_data()
+		 
+		 
+	function RGBtoHSV(r,g,b)
+		 {
+  			
+			
+			r = r / 255.0;
+			g = g / 255.0;
+			b = b / 255.0;
+
+			
+			cmax = Math.max(r, Math.max(g, b)); // maximum of r, g, b
+			cmin = Math.min(r, Math.min(g, b)); // minimum of r, g, b
+			diff = cmax - cmin; 
+			h = -1, s = -1;
+
+			// if cmax and cmax are equal then h = 0
+			if (cmax == cmin)
+				h = 0;
+
+			// if cmax equal r then compute h
+			else if (cmax == r)
+				h = (60 * ((g - b) / diff) + 360)% 360;
+
+			// if cmax equal g then compute h
+			else if (cmax == g)
+				h = (60 * ((b - r) / diff) + 120)% 360;
+
+			// if cmax equal b then compute h
+			else if (cmax == b)
+				h = (60 * ((r - g) / diff) + 240)% 360;
+
+			// if cmax equal zero
+			if (cmax == 0)
+				s = 0;
+			else
+				s = (diff / cmax);
+
+			// compute v
+			v = cmax;
+			document.getElementById('h').value = h
+			document.getElementById('s').value = s
+			document.getElementById('v').value = v
+		 }
+
         </script>
 </body>
 </html>
